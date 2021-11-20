@@ -1,10 +1,19 @@
 {% extends 'main/base.html' %}
 
 {% block title %}
-    Главная страница
+{{ title }}
 {% endblock %}
 
 {% block content %}
     <h1>Главная страница</h1>
-    <p>Просто текст</p>
+    {% if posts %}
+        {% for el in posts %}
+            <div class="alert alert-info mt-3">
+                <h3>{{ el.title }}</h3>
+                <p>{{ el.post }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Пусто</p>
+    {% endif %}
 {% endblock %}
